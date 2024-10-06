@@ -1,0 +1,7 @@
+.jsoneditor {
+    border: none;
+}
+div.jsoneditor-tree {
+    background-color: rgba(191, 191, 191, 0.57);
+    height: 100vh;
+}

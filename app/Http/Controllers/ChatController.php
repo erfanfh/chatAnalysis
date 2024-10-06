@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Charts\MyChart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ChatController extends Controller
 {
@@ -145,6 +146,22 @@ class ChatController extends Controller
                 $static['persons'][$sender]['messages']++;
             }
 
+        }
+
+        if ($request->submit == 'file') {
+            $jsonData = json_encode($static, JSON_PRETTY_PRINT);
+
+            $fileName = 'data-export.json';
+
+            // Store the JSON file in 'storage/app/public/'
+            Storage::disk('public')->put($fileName, $jsonData);
+
+            // Return the file as a download response
+            return response()->download(storage_path('app/public/' . $fileName))->deleteFileAfterSend(true);
+        }
+
+        if ($request->submit == 'raw') {
+            return view('showRawJson', ['static' => $static]);
         }
 
         $monthMessagesChart = new MyChart;
