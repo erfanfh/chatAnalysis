@@ -12,6 +12,8 @@ class ChatController extends Controller
     {
         $data = json_decode($request->json);
 
+        $array = [];
+
         $static = [
             'date' => [],
             'persons' => [],
@@ -126,10 +128,16 @@ class ChatController extends Controller
 
             if (!isset($static['persons'][$sender]['date'][$year])) {
                 $static['persons'][$sender]['date'][$year] = [];
+                $static['persons'][$sender]['date'][$year]['count'] = 1;
+            } else {
+                $static['persons'][$sender]['date'][$year]['count']++;
             }
 
             if (!isset($static['persons'][$sender]['date'][$year][$month])) {
                 $static['persons'][$sender]['date'][$year][$month] = [];
+                $static['persons'][$sender]['date'][$year][$month]['count'] = 1;
+            } else {
+                $static['persons'][$sender]['date'][$year][$month]['count']++;
             }
 
             if (!isset($static['persons'][$sender]['date'][$year][$month][$day])) {
@@ -153,10 +161,8 @@ class ChatController extends Controller
 
             $fileName = 'data-export.json';
 
-            // Store the JSON file in 'storage/app/public/'
             Storage::disk('public')->put($fileName, $jsonData);
 
-            // Return the file as a download response
             return response()->download(storage_path('app/public/' . $fileName))->deleteFileAfterSend(true);
         }
 
@@ -206,7 +212,7 @@ class ChatController extends Controller
                 $static['date'][$year]['12']['count'] ?? 0,
             ]
         )->options([
-            'backgroundColor' => '#16a085   ',
+            'backgroundColor' => '#16a085 ',
         ]);
 
         $year = 2022;
