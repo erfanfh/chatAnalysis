@@ -8,3 +8,4 @@ Route::get('/', function () {
 });
 
 Route::post('check', [ChatController::class, 'check'])->name('check');
+Route::get('check', [ChatController::class, 'check'])->name('check');

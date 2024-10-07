@@ -10,9 +10,15 @@ class ChatController extends Controller
 {
     public function check(Request $request)
     {
+        if (!$request->isMethod('POST')) {
+            return redirect('/');
+        }
+
         $data = json_decode($request->json);
 
-        $array = [];
+        if (!isset($data->messages)) {
+            return redirect('/')->with('error', 'Your data is not analysable!');
+        }
 
         $static = [
             'date' => [],
