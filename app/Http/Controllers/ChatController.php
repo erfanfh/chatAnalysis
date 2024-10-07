@@ -16,9 +16,29 @@ class ChatController extends Controller
 
         $data = json_decode($request->json);
 
-        if (!isset($data->messages)) {
+        if (!isset($data->messages) && !$request->hasFile('jsonFile')) {
             return redirect('/')->with('error', 'Your data is not analysable!');
         }
+
+        if ($request->hasFile('jsonFile')) {
+
+            $request->validate([
+                'jsonFile' => 'max:262144',
+            ]);
+
+            $file = $request->file('jsonFile');
+
+            $content = file_get_contents($file->getRealPath());
+
+            $decodedContent = json_decode($content);
+
+            $data = $decodedContent;
+
+            if (!isset($data->messages)) {
+                return redirect('/')->with('error', 'Your data is not analysable!');
+            }
+        }
+
 
         $static = [
             'date' => [],

@@ -11,10 +11,19 @@
 </head>
 <body>
 <div class="container">
-    <form class="container d-flex align-items-center flex-column mt-5" method="post" action="{{ route('check') }}">
+    <form class="container d-flex align-items-center flex-column mt-5" method="post" action="{{ route('check') }}" enctype="multipart/form-data">
         @csrf
         <div class="mb-3 w-100">
-            <label for="jsonText" class="form-label fw-lighter fs-1">Json Text</label>
+            <label for="jsonFile" class="form-label fw-lighter fs-1">Upload .json File <span class="text-danger">(Recommended)</span></label>
+            <input class="form-control" type="file" id="jsonFile" name="jsonFile">
+            <div class="fs-6 text-light-emphasis">Max: 128MB</div>
+        </div>
+        @error('jsonFile')
+            <div class="text-danger w-100">{{ $message }}</div>
+        @enderror
+        <span class="fw-lighter fs-1 text-center py-5">OR</span>
+        <div class="mb-3 w-100">
+            <label for="jsonText" class="form-label fw-lighter fs-1">Paste Json Text</label>
             <textarea class="form-control" id="jsonText" name="json" rows="15"
                       placeholder="{
     'name': 'Chat Analysis',
@@ -39,6 +48,8 @@
   ]
 }"
             ></textarea>
+            <div class="fs-6 text-light-emphasis">Max: 128MB</div>
+
         </div>
         <div class="mb-3 w-100">
             <button class="btn btn btn-outline-primary w-100" type="submit" name="submit" value="graph">Show Graph
@@ -47,7 +58,7 @@
         </div>
         <div class="mb-3 w-100">
             <button class="btn btn btn-outline-primary w-100" type="submit" name="submit" value="raw">Show full raw
-                file (more datails)
+                file (more details)
             </button>
         </div>
         <div class="mb-3 w-100">
