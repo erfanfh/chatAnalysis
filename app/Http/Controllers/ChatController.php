@@ -21,11 +21,6 @@ class ChatController extends Controller
         }
 
         if ($request->hasFile('jsonFile')) {
-
-            $request->validate([
-                'jsonFile' => 'max:262144',
-            ]);
-
             $file = $request->file('jsonFile');
 
             $content = file_get_contents($file->getRealPath());
