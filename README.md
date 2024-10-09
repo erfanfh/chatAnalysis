@@ -4,7 +4,8 @@ Welcome to **telegram-chat-analyser!**, a funny analyser to analysis your telegr
 
 ## Features
 
-- **Privacy:** Your chat don't save in any database and your files are not sored in anywhere.
+- **Privacy:** Your chats do not save in any database and your files are not sored in anywhere..
+- **Secure:** Since your details is not stored anywhere there is no risk to be hacked, your ways are just wide open.
 - **User-friendly:** Easy to use with graphs, a bit complicated when using raw result.
 
 
