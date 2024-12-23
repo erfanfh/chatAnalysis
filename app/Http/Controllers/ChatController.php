@@ -279,6 +279,49 @@ class ChatController extends Controller
             'backgroundColor' => '#c0392b',
         ]);
 
+        $year = 2024;
+//        $month = '07';
+        $dayMessagesChart = new MyChart;
+        $dayMessagesChart->labels(['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']);
+        $dayMessagesChart->dataset(
+            'days',
+            'line',
+            [
+                $static['date'][$year][$month]['01'] ?? 0,
+                $static['date'][$year][$month]['02'] ?? 0,
+                $static['date'][$year][$month]['03'] ?? 0,
+                $static['date'][$year][$month]['04'] ?? 0,
+                $static['date'][$year][$month]['05'] ?? 0,
+                $static['date'][$year][$month]['06'] ?? 0,
+                $static['date'][$year][$month]['07'] ?? 0,
+                $static['date'][$year][$month]['08'] ?? 0,
+                $static['date'][$year][$month]['09'] ?? 0,
+                $static['date'][$year][$month]['10'] ?? 0,
+                $static['date'][$year][$month]['11'] ?? 0,
+                $static['date'][$year][$month]['12'] ?? 0,
+                $static['date'][$year][$month]['13'] ?? 0,
+                $static['date'][$year][$month]['14'] ?? 0,
+                $static['date'][$year][$month]['15'] ?? 0,
+                $static['date'][$year][$month]['16'] ?? 0,
+                $static['date'][$year][$month]['17'] ?? 0,
+                $static['date'][$year][$month]['18'] ?? 0,
+                $static['date'][$year][$month]['19'] ?? 0,
+                $static['date'][$year][$month]['20'] ?? 0,
+                $static['date'][$year][$month]['21'] ?? 0,
+                $static['date'][$year][$month]['22'] ?? 0,
+                $static['date'][$year][$month]['23'] ?? 0,
+                $static['date'][$year][$month]['24'] ?? 0,
+                $static['date'][$year][$month]['25'] ?? 0,
+                $static['date'][$year][$month]['26'] ?? 0,
+                $static['date'][$year][$month]['27'] ?? 0,
+                $static['date'][$year][$month]['28'] ?? 0,
+                $static['date'][$year][$month]['29'] ?? 0,
+                $static['date'][$year][$month]['30'] ?? 0,
+            ]
+        )->options([
+            'backgroundColor' => '#DAF7A6',
+        ]);
+
         $typeMessages = new MyChart;
         $typeMessages->labels(['sticker', 'voice_message', 'animation', 'audio_file', 'video_message']);
         $typeMessages->dataset(
@@ -300,6 +343,7 @@ class ChatController extends Controller
             'monthMessagesChart' => $monthMessagesChart,
             'yearMessagesChart' => $yearMessagesChart,
             'typeMessages' => $typeMessages,
+            'dayMessagesChart' => $dayMessagesChart,
             'total' => $static['persons'],
         ]);
     }
