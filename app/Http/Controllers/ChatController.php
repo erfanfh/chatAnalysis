@@ -193,6 +193,27 @@ class ChatController extends Controller
 
         $monthMessagesChart = new MyChart;
         $monthMessagesChart->labels(['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']);
+        $year = 2025;
+        $monthMessagesChart->dataset(
+            $year,
+            'line',
+            [
+                $static['date'][$year]['01']['count'] ?? 0,
+                $static['date'][$year]['02']['count'] ?? 0,
+                $static['date'][$year]['03']['count'] ?? 0,
+                $static['date'][$year]['04']['count'] ?? 0,
+                $static['date'][$year]['05']['count'] ?? 0,
+                $static['date'][$year]['06']['count'] ?? 0,
+                $static['date'][$year]['07']['count'] ?? 0,
+                $static['date'][$year]['08']['count'] ?? 0,
+                $static['date'][$year]['09']['count'] ?? 0,
+                $static['date'][$year]['10']['count'] ?? 0,
+                $static['date'][$year]['11']['count'] ?? 0,
+                $static['date'][$year]['12']['count'] ?? 0,
+            ]
+        )->options([
+            'backgroundColor' => '#155E95',
+        ]);
         $year = 2024;
         $monthMessagesChart->dataset(
             $year,
