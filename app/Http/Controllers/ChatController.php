@@ -280,7 +280,7 @@ class ChatController extends Controller
         ]);
 
         $yearMessagesChart = new MyChart;
-        $yearMessagesChart->labels(['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024']);
+        $yearMessagesChart->labels(['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']);
         $yearMessagesChart->dataset(
             'Years',
             'line',
@@ -295,6 +295,7 @@ class ChatController extends Controller
                 $static['date']['2022']['count'] ?? 0,
                 $static['date']['2023']['count'] ?? 0,
                 $static['date']['2024']['count'] ?? 0,
+                $static['date']['2025']['count'] ?? 0,
             ]
         )->options([
             'backgroundColor' => '#c0392b',
