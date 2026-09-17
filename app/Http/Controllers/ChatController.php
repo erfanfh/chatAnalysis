@@ -193,6 +193,27 @@ class ChatController extends Controller
 
         $monthMessagesChart = new MyChart;
         $monthMessagesChart->labels(['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']);
+        $year = 2026;
+        $monthMessagesChart->dataset(
+            $year,
+            'line',
+            [
+                $static['date'][$year]['01']['count'] ?? 0,
+                $static['date'][$year]['02']['count'] ?? 0,
+                $static['date'][$year]['03']['count'] ?? 0,
+                $static['date'][$year]['04']['count'] ?? 0,
+                $static['date'][$year]['05']['count'] ?? 0,
+                $static['date'][$year]['06']['count'] ?? 0,
+                $static['date'][$year]['07']['count'] ?? 0,
+                $static['date'][$year]['08']['count'] ?? 0,
+                $static['date'][$year]['09']['count'] ?? 0,
+                $static['date'][$year]['10']['count'] ?? 0,
+                $static['date'][$year]['11']['count'] ?? 0,
+                $static['date'][$year]['12']['count'] ?? 0,
+            ]
+        )->options([
+            'backgroundColor' => '#c95959',
+        ]);
         $year = 2025;
         $monthMessagesChart->dataset(
             $year,
@@ -280,7 +301,7 @@ class ChatController extends Controller
         ]);
 
         $yearMessagesChart = new MyChart;
-        $yearMessagesChart->labels(['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']);
+        $yearMessagesChart->labels(['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026']);
         $yearMessagesChart->dataset(
             'Years',
             'line',
@@ -296,13 +317,14 @@ class ChatController extends Controller
                 $static['date']['2023']['count'] ?? 0,
                 $static['date']['2024']['count'] ?? 0,
                 $static['date']['2025']['count'] ?? 0,
+                $static['date']['2026']['count'] ?? 0,
             ]
         )->options([
             'backgroundColor' => '#c0392b',
         ]);
 
-        $year = 2024;
-//        $month = '07';
+        $year = 2026;
+        $month = '09';
         $dayMessagesChart = new MyChart;
         $dayMessagesChart->labels(['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']);
         $dayMessagesChart->dataset(
